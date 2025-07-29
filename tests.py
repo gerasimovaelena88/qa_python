@@ -57,6 +57,22 @@ class TestBooksCollector:
         assert self.BOOK1 in children_books
         assert self.BOOK2 not in children_books
 
+    def test_get_book_genre_returns_assigned_genre(self, collector):
+        collector.add_new_book(self.BOOK1)
+        collector.set_book_genre(self.BOOK1, "Фантастика")
+        assert collector.get_book_genre(self.BOOK1) == "Фантастика"
+
+    def test_get_books_genre_returns_all_books(self, collector):
+        collector.add_new_book(self.BOOK1)
+        collector.add_new_book(self.BOOK2)
+        collector.set_book_genre(self.BOOK1, "Фантастика")
+        
+        expected_result = {
+            self.BOOK1: "Фантастика",
+            self.BOOK2: ""
+        }
+        assert collector.get_books_genre() == expected_result
+
     @pytest.mark.parametrize('book, expected', [
         (BOOK1, True),
         (BOOK2, True),
@@ -90,3 +106,4 @@ class TestBooksCollector:
         assert self.BOOK1 in favorites
         assert self.BOOK2 in favorites
         assert len(favorites) == 2
+

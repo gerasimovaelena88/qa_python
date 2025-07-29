@@ -7,6 +7,8 @@ def test_add_new_book_duplicate - тестируем на повторное д�
 def test_set_book_genre - тестируем установку жанра.
 def test_get_books_with_specific_genre - тестируем получение книг по жанру.
 def test_get_books_for_children - тестируем получение детских книг.
+def test_get_book_genre_returns_assigned_genre - проверяем что get_book_genre возвращает установленный жанр.
+def test_get_books_genre_returns_all_books - проверяем что get_books_genre возвращает все книги с их жанрами.
 def test_add_book_in_favorites - тестируем добавление в избранное.
 def test_add_book_in_favorites_duplicate - тестируем повторное добавление книги в избранное.
 def test_delete_book_from_favorites - тестируем удаление из избранного.
