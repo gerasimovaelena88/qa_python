@@ -57,10 +57,14 @@ class TestBooksCollector:
         assert self.BOOK1 in children_books
         assert self.BOOK2 not in children_books
 
-    def test_get_book_genre_returns_assigned_genre(self, collector):
-        collector.add_new_book(self.BOOK1)
-        collector.set_book_genre(self.BOOK1, "Фантастика")
-        assert collector.get_book_genre(self.BOOK1) == "Фантастика"
+    def test_get_book_genre_from_dictionary(self, collector):
+        collector.books_genre = {
+        TestBooksCollector.BOOK1: "Фантастика",
+        TestBooksCollector.BOOK2: "Ужасы"
+        }
+        assert collector.get_book_genre(TestBooksCollector.BOOK1) == "Фантастика"
+        assert collector.get_book_genre(TestBooksCollector.BOOK2) == "Ужасы"
+        assert collector.get_book_genre("Нет такой книги") is None
 
     def test_get_books_genre_returns_all_books(self, collector):
         collector.add_new_book(self.BOOK1)
@@ -106,4 +110,3 @@ class TestBooksCollector:
         assert self.BOOK1 in favorites
         assert self.BOOK2 in favorites
         assert len(favorites) == 2
-
